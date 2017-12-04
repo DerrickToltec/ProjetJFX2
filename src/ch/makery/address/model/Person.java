@@ -24,6 +24,7 @@ public class Person {
 	private final StringProperty street;
 	private final IntegerProperty postalCode;
 	private final StringProperty city;
+	private  String image;
 	private final ObjectProperty<LocalDate> birthday;
 
 	/**
@@ -48,6 +49,7 @@ public class Person {
 		this.postalCode = new SimpleIntegerProperty(1234);
 		this.city = new SimpleStringProperty("some city");
 		this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
+		this.image = new String("C:/Users/derrick.kaffo/Documents/WorkSpace/ProjetJFX2/resources/images/person.jpg");
 	}
 
 	public String getFirstName() {
@@ -117,6 +119,16 @@ public class Person {
 
 	public void setBirthday(LocalDate birthday) {
 		this.birthday.set(birthday);
+	}
+
+ 
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public ObjectProperty<LocalDate> birthdayProperty() {

@@ -1,5 +1,7 @@
 package ch.makery.address.view;
 
+import java.io.File;
+
 import ch.makery.address.MainApp;
 import ch.makery.address.model.Person;
 import ch.makery.address.util.DateUtil;
@@ -9,6 +11,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class PersonOverviewController {
 	@FXML
@@ -30,6 +34,8 @@ public class PersonOverviewController {
 	private Label cityLabel;
 	@FXML
 	private Label birthdayLabel;
+	 @FXML
+	private ImageView imageVeiwP;
 
 	// Reference to the main application.
 	private MainApp mainApp;
@@ -88,7 +94,11 @@ public class PersonOverviewController {
 			postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
 			cityLabel.setText(person.getCity());
 			birthdayLabel.setText(DateUtil.format(person.getBirthday()));
-
+			
+            String imageURL = new File(person.getImage()).toURI().toString();
+			
+			imageVeiwP.setImage(new Image(imageURL));
+		
 		} else {
 			// Person is null, remove all the text.
 			firstNameLabel.setText("");
@@ -157,4 +167,6 @@ public class PersonOverviewController {
 	        alert.showAndWait();
 	    }
 	}
+	
+
 }

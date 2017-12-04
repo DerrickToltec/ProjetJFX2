@@ -17,11 +17,13 @@ import ch.makery.address.view.RootLayoutController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -31,6 +33,8 @@ public class MainApp extends Application {
 
 	private Stage primaryStage;
 	private BorderPane rootLayout;
+	 @FXML
+	private ImageView imageVeiw;
 
 	/**
 	 * The data as an observable list of Persons.
@@ -140,6 +144,8 @@ public class MainApp extends Application {
 			// Load the fxml file and create a new stage for the popup dialog.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("view/PersonEditDialog.fxml"));
+
+			
 			System.out.println(loader.getLocation());
 			BorderPane page = (BorderPane) loader.load();
 
@@ -258,6 +264,7 @@ public class MainApp extends Application {
 	        dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(page);
 	        dialogStage.setScene(scene);
+	        dialogStage.getIcons().add(new Image("file:resources/images/stats-1.png"));
 
 	        // Set the persons into the controller.
 	        BirthdayStatisticsController controller = loader.getController();
